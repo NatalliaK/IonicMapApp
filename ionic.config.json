@@ -1,5 +1,7 @@
 {
   "name": "d:\\ionic-app",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }

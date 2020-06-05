@@ -1,8 +1,8 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import React, { Suspense, lazy } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import { Preloader } from './components/Preloader/Preloader';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -23,12 +23,21 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const Map = lazy(() => import('./pages/Map'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/home" component={Home} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
+        <Suspense fallback={<Preloader />}>
+          <Switch>
+            <Route exact path="/" component={LoginPage} />
+            <Route path="/map" component={Map} />
+            <Route component={NotFound} />
+          </Switch>
+        </Suspense>
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
