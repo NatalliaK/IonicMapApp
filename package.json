@@ -21,7 +21,7 @@
     "@types/react-leaflet": "^2.5.1",
     "@types/react-redux": "^7.1.8",
     "@types/redux-thunk": "^2.1.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "ionicons": "^5.0.0",
     "leaflet": "^1.6.0",
     "node-sass": "^4.14.1",
